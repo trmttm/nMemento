@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='nMemento',
+    name='n_memento',
     version='',
     packages=['test', 'n_memento'],
     url='',
