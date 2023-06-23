@@ -9,25 +9,31 @@ class MyTestCase(unittest.TestCase):
         original_state = {'x': 0}
         originator = Originator(original_state)
         caretaker = Caretaker(originator)
+        self.assertEqual(originator.state, original_state)
 
         caretaker.backup()
         originator.set('x', 1)
         self.assertEqual(originator.get('x'), 1)
         self.assertEqual(originator.get('y'), None)
+        self.assertEqual(originator.state, {'x': 1})
 
         caretaker.backup()
         originator.set('x', 2)
         self.assertEqual(originator.get('x'), 2)
         self.assertEqual(originator.get('y'), None)
+        self.assertEqual(originator.state, {'x': 2})
 
         caretaker.backup()
         originator.set('y', 0)
         self.assertEqual(originator.get('x'), 2)
         self.assertEqual(originator.get('y'), 0)
+        self.assertEqual(originator.state, {'x': 2, 'y': 0})
 
         caretaker.show_history()
         caretaker.undo()
+        self.assertEqual(originator.state, {'x': 2, })
         caretaker.undo()
+        self.assertEqual(originator.state, {'x': 1, })
 
     def test_encapsulation(self):
         from n_memento.entity import Entity
