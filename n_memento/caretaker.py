@@ -15,7 +15,7 @@ class Caretaker:
 
     def undo(self):
         if not len(self._mementos):
-            print('Nomore memento to undo.')
+            print('No more memento to undo.')
             return
         memento = self._mementos.pop()
         try:
