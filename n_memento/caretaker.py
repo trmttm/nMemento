@@ -29,3 +29,7 @@ class Caretaker:
         for n, memento in enumerate(self._mementos):
             print(n, memento.get_name())
         print()
+
+    @property
+    def history(self) -> dict:
+        return dict(zip(range(len(self._mementos)), tuple(m.get_name() for m in self._mementos)))

@@ -16,6 +16,9 @@ class Entity:
     def show_history(self):
         self._caretaker.show_history()
 
+    def get_history(self) -> dict:
+        return self._caretaker.history
+
     def get(self, key: str):
         return self._originator.get(key)
 
