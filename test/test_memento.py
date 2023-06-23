@@ -6,18 +6,24 @@ class MyTestCase(unittest.TestCase):
         from n_memento import Caretaker
         from n_memento import Originator
 
-        original_state = 0
+        original_state = {'x': 0}
         originator = Originator(original_state)
         caretaker = Caretaker(originator)
 
         caretaker.backup()
-        originator.do()
+        originator.set('x', 1)
+        self.assertEqual(originator.get('x'), 1)
+        self.assertEqual(originator.get('y'), None)
 
         caretaker.backup()
-        originator.do()
+        originator.set('x', 2)
+        self.assertEqual(originator.get('x'), 2)
+        self.assertEqual(originator.get('y'), None)
 
         caretaker.backup()
-        originator.do()
+        originator.set('y', 0)
+        self.assertEqual(originator.get('x'), 2)
+        self.assertEqual(originator.get('y'), 0)
 
         caretaker.show_history()
         caretaker.undo()

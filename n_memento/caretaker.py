@@ -1,9 +1,11 @@
 from n_memento.originator import Originator
 
+from .memento import Memento
+
 
 class Caretaker:
     def __init__(self, originator: Originator):
-        self._mementos = []
+        self._mementos: list[Memento, ...] = []
         self._originator = originator
 
     def backup(self):
