@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='n_memento',
+    name='nMemento',
     version='',
-    packages=['test', 'n_memento'],
+    packages=['test', 'nMemento'],
     url='',
     license='',
     author='taro',
