@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='nMemento',
     version='',
-    packages=['test', 'nMemento'],
+    packages=['test', 'n_memento'],
     url='',
     license='',
     author='taro',
