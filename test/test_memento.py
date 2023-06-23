@@ -38,24 +38,33 @@ class MyTestCase(unittest.TestCase):
     def test_encapsulation(self):
         from n_memento.entity import Entity
         entity = Entity()
+        self.assertEqual(entity.state, {})
 
         entity.backup()
         entity.set('x', 0)
+        self.assertEqual(entity.state, {'x': 0})
 
         entity.backup()
         entity.set('x', 2)
+        self.assertEqual(entity.state, {'x': 2})
 
         entity.backup()
         entity.set('y', 0)
+        self.assertEqual(entity.state, {'x': 2, 'y': 0})
 
         entity.backup()
         entity.show_history()
 
         entity.undo()
+        self.assertEqual(entity.state, {'x': 2, 'y': 0})
         entity.undo()
+        self.assertEqual(entity.state, {'x': 2,})
         entity.undo()
+        self.assertEqual(entity.state, {'x': 0})
         entity.undo()
+        self.assertEqual(entity.state, {})
         entity.undo()
+        self.assertEqual(entity.state, {})
 
 
 if __name__ == '__main__':
