@@ -17,3 +17,7 @@ class Originator:
 
     def restore(self, memento: Memento):
         self._state = memento.get_state()
+
+    @property
+    def state(self) -> dict:
+        return dict(self._state)

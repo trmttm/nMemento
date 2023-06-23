@@ -2,9 +2,9 @@ import unittest
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        from n_memento import Caretaker
-        from n_memento import Originator
+    def test_each_object(self):
+        from n_memento.caretaker import Caretaker
+        from n_memento.originator import Originator
 
         original_state = {'x': 0}
         originator = Originator(original_state)
@@ -28,6 +28,28 @@ class MyTestCase(unittest.TestCase):
         caretaker.show_history()
         caretaker.undo()
         caretaker.undo()
+
+    def test_encapsulation(self):
+        from n_memento.entity import Entity
+        entity = Entity()
+
+        entity.backup()
+        entity.set('x', 0)
+
+        entity.backup()
+        entity.set('x', 2)
+
+        entity.backup()
+        entity.set('y', 0)
+
+        entity.backup()
+        entity.show_history()
+
+        entity.undo()
+        entity.undo()
+        entity.undo()
+        entity.undo()
+        entity.undo()
 
 
 if __name__ == '__main__':

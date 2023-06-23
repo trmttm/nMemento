@@ -1,2 +1,1 @@
-from .caretaker import Caretaker
-from .originator import Originator
+from .entity import Entity
